@@ -7,40 +7,59 @@
     *{margin:0;padding:0;box-sizing:border-box}
     body{
       font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-      background:black;
-      color:white;
+      line-height:1.7;
+      transition: background 0.3s, color 0.3s;
       max-width:900px;
       margin:0 auto;
       padding:2rem 1rem;
-      line-height:1.7;
     }
-    header{margin-bottom:2.5rem}
+    .light{background:#f6f8fa;color:#333}
+    .dark{background:#121212;color:#e0e0e0}
+
+    header{margin-bottom:2.5rem;display:flex;justify-content:space-between;align-items:center}
     h1{font-size:2.2rem;margin-bottom:0.5rem}
-    .subtitle{color:#666}
+    .subtitle{color:#aaa}
+    .light .subtitle{color:#666}
+
+    #toggle{
+      padding:6px 12px;border-radius:8px;border:none;cursor:pointer;
+      background:#1e1e1e;color:#fff;
+    }
+    .light #toggle{background:#e0e0e0;color:#333}
 
     .card{
-      background:#fff;
       border-radius:12px;
       padding:1.8rem;
       margin-bottom:1.5rem;
-      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      box-shadow:0 2px 8px rgba(0,0,0,0.15);
       transition:0.2s;
     }
-    .card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-    .card time{color:#999;font-size:0.85rem}
-    .card h2{margin:0.6rem 0}
-    .card a{color:#111;text-decoration:none}
-    .card a:hover{color:#0066cc}
-    .card p{color:#555}
+    .dark .card{background:#1e1e1e}
+    .light .card{background:#fff}
+    .card:hover{transform:translateY(-2px)}
 
-    footer{margin-top:4rem;text-align:center;color:#999;font-size:0.9rem}
+    .card time{color:#888;font-size:0.85rem}
+    .light .card time{color:#777}
+    .card h2{margin:0.6rem 0}
+    .card a{text-decoration:none}
+    .dark .card a{color:#fff}
+    .light .card a{color:#111}
+    .dark .card a:hover{color:#4fc3f7}
+    .light .card a:hover{color:#0066cc}
+    .dark .card p{color:#bbb}
+    .light .card p{color:#555}
+
+    footer{margin-top:4rem;text-align:center;color:#777;font-size:0.9rem}
   </style>
 </head>
-<body>
 
+<body class="dark">
 <header>
-  <h1>weekomen</h1>
-  <p class="subtitle">记录学习与日常</p>
+  <div>
+    <h1>感谢github共享开源提供平台</h1>
+    <p class="subtitle">记录学习与日常</p>
+  </div>
+  <button id="toggle">切换模式</button>
 </header>
 
 <div class="articles">
@@ -59,5 +78,20 @@
 
 <footer>© 2026 weekomen • GitHub Pages</footer>
 
+<script>
+  const body = document.body
+  const toggle = document.getElementById('toggle')
+  const mode = localStorage.getItem('mode') || 'dark'
+
+  body.className = mode
+  toggle.textContent = mode === 'dark' ? '白天模式' : '黑夜模式'
+
+  toggle.addEventListener('click', () => {
+    const newMode = body.classList.contains('dark') ? 'light' : 'dark'
+    body.className = newMode
+    toggle.textContent = newMode === 'dark' ? '白天模式' : '黑夜模式'
+    localStorage.setItem('mode', newMode)
+  })
+</script>
 </body>
 </html>
