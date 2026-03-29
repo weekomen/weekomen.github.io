@@ -1,19 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background: black;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <title>weekomen 的博客</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+      background:black;
+      color:white;
+      max-width:900px;
+      margin:0 auto;
+      padding:2rem 1rem;
+      line-height:1.7;
+    }
+    header{margin-bottom:2.5rem}
+    h1{font-size:2.2rem;margin-bottom:0.5rem}
+    .subtitle{color:#666}
+
+    .card{
+      background:#fff;
+      border-radius:12px;
+      padding:1.8rem;
+      margin-bottom:1.5rem;
+      box-shadow:0 2px 8px rgba(0,0,0,0.06);
+      transition:0.2s;
+    }
+    .card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .card time{color:#999;font-size:0.85rem}
+    .card h2{margin:0.6rem 0}
+    .card a{color:#111;text-decoration:none}
+    .card a:hover{color:#0066cc}
+    .card p{color:#555}
+
+    footer{margin-top:4rem;text-align:center;color:#999;font-size:0.9rem}
+  </style>
 </head>
 <body>
-    搞个名叫的文件index可以吗
-    22点20分 万岁！！居然是只能有一个html！只有一个index.html！也就是说没认真看人家的教程吧
-    <a href="https://docs.github.com/en/pages/quickstart">https://docs.github.com/en/pages/quickstart</a>毕竟是官方权威
+
+<header>
+  <h1>weekomen</h1>
+  <p class="subtitle">记录学习与日常</p>
+</header>
+
+<div class="articles">
+  <div class="card">
+    <time>2026-03-29</time>
+    <h2><a href="article1.html">GitHub Pages 搭建博客成功</a></h2>
+    <p>终于把 GitHub Pages 跑起来了，原来只需要一个 index.html 就可以拥有自己的网站。</p>
+  </div>
+
+  <div class="card">
+    <time>2026-03-29</time>
+    <h2><a href="article2.html">学习 HTML & CSS 的第一天</a></h2>
+    <p>今天开始学做网页，卡片、排版、跳转链接，原来这么简单。</p>
+  </div>
+</div>
+
+<footer>© 2026 weekomen • GitHub Pages</footer>
+
 </body>
 </html>
