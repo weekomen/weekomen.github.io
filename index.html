@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>紧急求助 | 司金良先生定向互助献血爱心接力</title>
-    <!-- 内置样式，无需外部资源，本地打开也能正常显示 -->
     <style>
         * {
             margin: 0;
@@ -13,20 +12,36 @@
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
         }
         body {
-            background-color: #f5f5f5;
-            padding-bottom: 60px;
-            line-height: 1.6;
+            background-color: #f8f9fa;
+            padding-bottom: 80px;
+            line-height: 1.7;
+            color: #333;
+        }
+        /* 顶部固定导航 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(90deg, #d92b2b, #e63946);
+            color: white;
+            padding: 12px 20px;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(217, 43, 43, 0.2);
+        }
+        .navbar h1 {
+            font-size: 18px;
+            text-align: center;
+            font-weight: 600;
         }
         /* 头部紧急标题 */
         .header {
             background: linear-gradient(90deg, #d92b2b, #e63946);
             color: white;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px 30px;
         }
         .header h1 {
-            font-size: 28px;
-            margin-bottom: 8px;
+            font-size: 32px;
+            margin-bottom: 10px;
             font-weight: bold;
         }
         .header p {
@@ -37,14 +52,19 @@
         .urgent-tip {
             background: #fff3cd;
             border-left: 6px solid #ffc107;
-            margin: 20px 15px;
-            padding: 18px;
-            border-radius: 6px;
+            margin: 25px auto;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 92%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
         .urgent-tip h2 {
             color: #856404;
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 19px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
         }
         .urgent-tip p {
             color: #721c24;
@@ -54,32 +74,34 @@
         /* 通用卡片样式 */
         .card {
             background: white;
-            margin: 15px;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin: 20px auto;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            max-width: 800px;
+            width: 92%;
         }
         .card h3 {
             color: #d92b2b;
-            font-size: 20px;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #f0f0f0;
+            font-size: 21px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f5f5f5;
+            font-weight: 600;
         }
         .card p, .card li {
             font-size: 16px;
-            color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .card ul {
-            padding-left: 20px;
+            padding-left: 24px;
         }
         /* 联系方式区块 */
         .contact-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #f0f0f0;
         }
         .contact-item:last-child {
@@ -88,80 +110,123 @@
         .contact-label {
             font-weight: 500;
             color: #333;
+            font-size: 16px;
         }
         .contact-value {
             color: #d92b2b;
             font-weight: bold;
+            font-size: 16px;
+            margin-right: 15px;
         }
         .copy-btn {
             background: #d92b2b;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 8px 16px;
+            border-radius: 6px;
             font-size: 14px;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+        .copy-btn:hover {
+            background: #b82323;
+            transform: translateY(-1px);
         }
         .copy-btn:active {
-            background: #b82323;
+            transform: translateY(0);
         }
         /* 证明图片区块 */
         .proof-box {
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .proof-box p {
             color: #666;
-            font-size: 14px;
-            margin-bottom: 10px;
+            font-size: 15px;
+            margin-bottom: 15px;
         }
         .proof-img {
-            width: 100%;
-            border-radius: 6px;
-            margin-bottom: 10px;
+            display: block;
+            max-width: 100%;
+            width: auto;
+            max-height: 500px;
+            border-radius: 8px;
+            margin: 0 auto 20px;
             border: 1px solid #f0f0f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .proof-img:hover {
+            transform: scale(1.01);
         }
         /* 温馨提示 */
         .tip-box {
             background: #e7f3ff;
             border-left: 6px solid #1677ff;
-            padding: 15px;
-            border-radius: 6px;
-            margin-top: 15px;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
         }
         .tip-box h4 {
             color: #1677ff;
-            margin-bottom: 8px;
-            font-size: 16px;
+            margin-bottom: 10px;
+            font-size: 17px;
+            font-weight: 600;
         }
         .tip-box li {
             font-size: 15px;
-            color: #333;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
         /* 底部呼吁 */
         .footer {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 40px;
             padding: 0 20px;
         }
         .footer p {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 8px;
+            font-size: 17px;
+            margin-bottom: 10px;
         }
         .footer .bless {
             color: #d92b2b;
             font-weight: bold;
-            font-size: 18px;
-            margin-top: 15px;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+        /* 图片放大遮罩 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .image-modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        .image-modal.active {
+            display: flex;
         }
     </style>
 </head>
 <body>
+    <!-- 顶部固定导航 -->
+    <div class="navbar">
+        <h1>紧急求助 | 司金良先生定向互助献血</h1>
+    </div>
+
     <!-- 头部标题 -->
     <div class="header">
         <h1>紧急求助 爱心接力</h1>
-        <p>武汉同济医院患者急需定向互助献血</p>
+        <p>武汉同济医院患者急需定向互助献血支持</p>
     </div>
 
     <!-- 核心紧急提示 -->
@@ -176,7 +241,7 @@
         <p><strong>求助人：</strong>司兆铭，武汉科技大学24级网络工程专业学生，为患者儿子</p>
         <p><strong>患者：</strong>司金良，男，42岁</p>
         <p><strong>就诊医院：</strong>武汉华中科技大学同济医学院附属同济医院（汉口院区）</p>
-        <p><strong>住院信息：</strong>肾脏内科二病区，住院号60018979530</p>
+        <p><strong>住院信息：</strong>肾脏内科二病区，住院号60018979530，16楼北29床</p>
         <p><strong>病情说明：</strong>ANCA相关性血管炎导致的急性肾衰竭，不及时输血置换血浆，可能引发肾脏衰竭、肺部及其他器官并发症，急需足量血浆完成血浆置换手术。</p>
     </div>
 
@@ -194,35 +259,40 @@
 
     <!-- 联系方式 -->
     <div class="card">
-        <h3>三、官方联系方式</h3>
+        <h3>三、求助者联系方式</h3>
         <div class="contact-item">
             <span class="contact-label">联系电话</span>
-            <span class="contact-value" id="phone">15971491445</span>
-            <button class="copy-btn" onclick="copyText('phone')">复制</button>
+            <div style="display: flex; align-items: center;">
+                <span class="contact-value" id="phone">15971491445</span>
+                <button class="copy-btn" onclick="copyText('phone')">复制</button>
+            </div>
         </div>
         <div class="contact-item">
             <span class="contact-label">微信号</span>
-            <span class="contact-value" id="wechat">likiris</span>
-            <button class="copy-btn" onclick="copyText('wechat')">复制</button>
+            <div style="display: flex; align-items: center;">
+                <span class="contact-value" id="wechat">likiris</span>
+                <button class="copy-btn" onclick="copyText('wechat')">复制</button>
+            </div>
         </div>
         <div class="contact-item">
             <span class="contact-label">QQ号</span>
-            <span class="contact-value" id="qq">3424478967</span>
-            <button class="copy-btn" onclick="copyText('qq')">复制</button>
+            <div style="display: flex; align-items: center;">
+                <span class="contact-value" id="qq">3424478967</span>
+                <button class="copy-btn" onclick="copyText('qq')">复制</button>
+            </div>
         </div>
-        <p style="margin-top: 15px; font-size: 14px; color: #666;">可随时联系家属确认献血细节，感谢您的爱心援手！</p>
+        <p style="margin-top: 20px; font-size: 14px; color: #666;">可随时联系家属确认献血细节，感谢您的爱心援手！</p>
     </div>
 
     <!-- 真实性证明 -->
     <div class="card">
-        <h3>四、相关证明材料</h3>
+        <h3>四、相关证明材料&操作指引</h3>
         <div class="proof-box">
-            <p>以下为患者住院凭证、用血申请相关证明（已做隐私打码处理）</p>
-            <!-- 替换这里的图片链接，换成你自己的打码证明图，可放多张 -->
-            <img src="https://picsum.photos/800/500" alt="住院证明" class="proof-img">
-            <img src="https://picsum.photos/800/500" alt="用血申请单" class="proof-img">
-            <img src="https://picsum.photos/800/500" alt="武汉血液中心献血指引" class="proof-img">
-            <!-- 图片替换结束 -->
+            <p>以下为患者住院凭证、献血操作完整指引，所有信息均可核验（点击图片可放大查看）</p>
+            <img src="./1.jpg" alt="患者住院腕带证明" class="proof-img" onclick="openImage(this)">
+            <img src="./2.jpg" alt="患者住院床位信息证明" class="proof-img" onclick="openImage(this)">
+            <img src="./3.jpg" alt="武汉血液中心公众号操作指引" class="proof-img" onclick="openImage(this)">
+            <img src="./4.jpg" alt="献血点查询操作指引" class="proof-img" onclick="openImage(this)">
         </div>
     </div>
 
@@ -236,9 +306,10 @@
                 <li>男性体重≥50kg，女性体重≥45kg</li>
                 <li>近一周无感冒、服药、饮酒，近半年无大型手术、高危献血史</li>
                 <li>献血前清淡饮食、保证充足睡眠，避免空腹献血</li>
+                <li>献血后注意休息，24小时内避免剧烈运动，适当补充营养</li>
             </ul>
         </div>
-        <div class="tip-box" style="margin-top: 15px; background: #f6ffed; border-left-color: #52c41a;">
+        <div class="tip-box" style="margin-top: 20px; background: #f6ffed; border-left-color: #52c41a;">
             <h4>✅ 合规说明</h4>
             <ul>
                 <li>本次为正规定向互助献血，全程仅在武汉血液中心官方献血点/献血车完成，无任何私下采血行为</li>
@@ -255,11 +326,15 @@
         <p class="bless">愿患者早日康复，平安顺遂！</p>
     </div>
 
+    <!-- 图片放大遮罩 -->
+    <div class="image-modal" id="imageModal" onclick="closeImage()">
+        <img id="modalImage" src="" alt="放大图片">
+    </div>
+
     <!-- 一键复制JS功能 -->
     <script>
         function copyText(elementId) {
             const text = document.getElementById(elementId).innerText;
-            // 兼容浏览器复制
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text).then(() => {
                     alert("复制成功！");
@@ -270,7 +345,6 @@
                 fallbackCopy(text);
             }
         }
-        // 降级复制方案
         function fallbackCopy(text) {
             const textArea = document.createElement("textarea");
             textArea.value = text;
@@ -288,6 +362,17 @@
             } finally {
                 textArea.remove();
             }
+        }
+        // 图片放大功能
+        function openImage(img) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = img.src;
+            modal.classList.add('active');
+        }
+        function closeImage() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
         }
     </script>
 </body>
