@@ -1,97 +1,294 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
-  <title>一个好的标题可以让别人对你的文字印象深刻</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-      line-height:1.7;
-      transition: background 0.3s, color 0.3s;
-      max-width:900px;
-      margin:0 auto;
-      padding:2rem 1rem;
-    }
-    .light{background:#f6f8fa;color:#333}
-    .dark{background:#121212;color:#e0e0e0}
-
-    header{margin-bottom:2.5rem;display:flex;justify-content:space-between;align-items:center}
-    h1{font-size:2.2rem;margin-bottom:0.5rem}
-    .subtitle{color:#aaa}
-    .light .subtitle{color:#666}
-
-    #toggle{
-      padding:6px 12px;border-radius:8px;border:none;cursor:pointer;
-      background:#1e1e1e;color:#fff;
-    }
-    .light #toggle{background:#e0e0e0;color:#333}
-
-    .card{
-      border-radius:12px;
-      padding:1.8rem;
-      margin-bottom:1.5rem;
-      box-shadow:0 2px 8px rgba(0,0,0,0.15);
-      transition:0.2s;
-    }
-    .dark .card{background:#1e1e1e}
-    .light .card{background:#fff}
-    .card:hover{transform:translateY(-2px)}
-
-    .card time{color:#888;font-size:0.85rem}
-    .light .card time{color:#777}
-    .card h2{margin:0.6rem 0}
-    .card a{text-decoration:none}
-    .dark .card a{color:#fff}
-    .light .card a{color:#111}
-    .dark .card a:hover{color:#4fc3f7}
-    .light .card a:hover{color:#0066cc}
-    .dark .card p{color:#bbb}
-    .light .card p{color:#555}
-
-    footer{margin-top:4rem;text-align:center;color:#777;font-size:0.9rem}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紧急求助 | 司金良先生定向互助献血爱心接力</title>
+    <!-- 内置样式，无需外部资源，本地打开也能正常显示 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            padding-bottom: 60px;
+            line-height: 1.6;
+        }
+        /* 头部紧急标题 */
+        .header {
+            background: linear-gradient(90deg, #d92b2b, #e63946);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        /* 核心紧急提示 */
+        .urgent-tip {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            margin: 20px 15px;
+            padding: 18px;
+            border-radius: 6px;
+        }
+        .urgent-tip h2 {
+            color: #856404;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .urgent-tip p {
+            color: #721c24;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        /* 通用卡片样式 */
+        .card {
+            background: white;
+            margin: 15px;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card h3 {
+            color: #d92b2b;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        .card p, .card li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .card ul {
+            padding-left: 20px;
+        }
+        /* 联系方式区块 */
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        .contact-label {
+            font-weight: 500;
+            color: #333;
+        }
+        .contact-value {
+            color: #d92b2b;
+            font-weight: bold;
+        }
+        .copy-btn {
+            background: #d92b2b;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .copy-btn:active {
+            background: #b82323;
+        }
+        /* 证明图片区块 */
+        .proof-box {
+            margin-top: 15px;
+        }
+        .proof-box p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .proof-img {
+            width: 100%;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid #f0f0f0;
+        }
+        /* 温馨提示 */
+        .tip-box {
+            background: #e7f3ff;
+            border-left: 6px solid #1677ff;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        .tip-box h4 {
+            color: #1677ff;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+        .tip-box li {
+            font-size: 15px;
+            color: #333;
+            margin-bottom: 6px;
+        }
+        /* 底部呼吁 */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+        .footer p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .footer .bless {
+            color: #d92b2b;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
+<body>
+    <!-- 头部标题 -->
+    <div class="header">
+        <h1>紧急求助 爱心接力</h1>
+        <p>武汉同济医院患者急需定向互助献血</p>
+    </div>
 
-<body class="dark">
-<header>
-  <div>
-    <h1>感谢Github共享开源平台</h1>
-    <p class="subtitle">记录学习与日常</p>
-  </div>
-  <button id="toggle">切换模式</button>
-</header>
+    <!-- 核心紧急提示 -->
+    <div class="urgent-tip">
+        <h2>⚠️ 紧急用血需求</h2>
+        <p>患者司金良，因ANCA相关性血管炎引发急性肾衰竭，需紧急进行血浆置换手术，现需定向互助献血支持，不限血型，需标注用于A型血浆制备。全程在武汉血液中心正规献血点操作，合法合规，家属将全额承担路费、营养费及误工费。</p>
+    </div>
 
-<div class="articles">
-  <div class="card">
-    <time>2026-03-29</time>
-    <h2><a href="article1.html">GitHub Pages 搭建博客成功</a></h2>
-    <p>终于把 GitHub Pages 跑起来了，原来只需要一个 index.html 就可以拥有自己的网站。</p>
-  </div>
+    <!-- 基本情况说明 -->
+    <div class="card">
+        <h3>一、求助人&患者基本情况</h3>
+        <p><strong>求助人：</strong>司兆铭，武汉科技大学24级网络工程专业学生，为患者儿子</p>
+        <p><strong>患者：</strong>司金良，男，42岁</p>
+        <p><strong>就诊医院：</strong>武汉华中科技大学同济医学院附属同济医院（汉口院区）</p>
+        <p><strong>住院信息：</strong>肾脏内科二病区，住院号60018979530</p>
+        <p><strong>病情说明：</strong>ANCA相关性血管炎导致的急性肾衰竭，不及时输血置换血浆，可能引发肾脏衰竭、肺部及其他器官并发症，急需足量血浆完成血浆置换手术。</p>
+    </div>
 
-  <div class="card">
-    <time>2026-03-29</time>
-    <h2><a href="article2.html">学习 HTML & CSS 的第一天</a></h2>
-    <p>今天开始学做网页，卡片、排版、跳转链接，原来这么简单。</p>
-  </div>
-</div>
+    <!-- 定向献血流程 -->
+    <div class="card">
+        <h3>二、定向互助献血完整流程</h3>
+        <ul>
+            <li>1. 关注「武汉血液中心」官方公众号，在“今日献血点”中选择就近的全血献血点，确认营业时间后前往；</li>
+            <li>2. 携带本人身份证，到献血点后，向工作人员登记患者信息：<strong>司金良，肾脏内科二病区，住院号60018979530</strong>；</li>
+            <li>3. 务必向工作人员说明：<strong>本次为司金良定向献血，用于血浆置换手术的血浆制备，血液请标注为新鲜原生血浆</strong>；</li>
+            <li>4. 完成健康体检与献血流程后，可将献血回执拍照发给家属，家属将同步结算路费、营养费、误工费；</li>
+            <li><strong>补充说明：</strong>不限献血血型，血站会统一调配适配的A型血浆，只需定向登记到患者名下即可。</li>
+        </ul>
+    </div>
 
-<footer>© 2026 weekomen • GitHub Pages</footer>
+    <!-- 联系方式 -->
+    <div class="card">
+        <h3>三、官方联系方式</h3>
+        <div class="contact-item">
+            <span class="contact-label">联系电话</span>
+            <span class="contact-value" id="phone">15971491445</span>
+            <button class="copy-btn" onclick="copyText('phone')">复制</button>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">微信号</span>
+            <span class="contact-value" id="wechat">likiris</span>
+            <button class="copy-btn" onclick="copyText('wechat')">复制</button>
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">QQ号</span>
+            <span class="contact-value" id="qq">3424478967</span>
+            <button class="copy-btn" onclick="copyText('qq')">复制</button>
+        </div>
+        <p style="margin-top: 15px; font-size: 14px; color: #666;">可随时联系家属确认献血细节，感谢您的爱心援手！</p>
+    </div>
 
-<script>
-  const body = document.body
-  const toggle = document.getElementById('toggle')
-  const mode = localStorage.getItem('mode') || 'dark'
+    <!-- 真实性证明 -->
+    <div class="card">
+        <h3>四、相关证明材料</h3>
+        <div class="proof-box">
+            <p>以下为患者住院凭证、用血申请相关证明（已做隐私打码处理）</p>
+            <!-- 替换这里的图片链接，换成你自己的打码证明图，可放多张 -->
+            <img src="https://picsum.photos/800/500" alt="住院证明" class="proof-img">
+            <img src="https://picsum.photos/800/500" alt="用血申请单" class="proof-img">
+            <img src="https://picsum.photos/800/500" alt="武汉血液中心献血指引" class="proof-img">
+            <!-- 图片替换结束 -->
+        </div>
+    </div>
 
-  body.className = mode
-  toggle.textContent = mode === 'dark' ? '白天模式' : '黑夜模式'
+    <!-- 温馨提示 -->
+    <div class="card">
+        <h3>五、爱心献血温馨提示</h3>
+        <div class="tip-box">
+            <h4>✅ 献血基本健康要求</h4>
+            <ul>
+                <li>年龄18-55周岁，身体健康，无传染性疾病、严重基础病</li>
+                <li>男性体重≥50kg，女性体重≥45kg</li>
+                <li>近一周无感冒、服药、饮酒，近半年无大型手术、高危献血史</li>
+                <li>献血前清淡饮食、保证充足睡眠，避免空腹献血</li>
+            </ul>
+        </div>
+        <div class="tip-box" style="margin-top: 15px; background: #f6ffed; border-left-color: #52c41a;">
+            <h4>✅ 合规说明</h4>
+            <ul>
+                <li>本次为正规定向互助献血，全程仅在武汉血液中心官方献血点/献血车完成，无任何私下采血行为</li>
+                <li>严格遵守《中华人民共和国献血法》，坚决杜绝任何形式的血液买卖，所有费用仅为合理的路费、营养费、误工费</li>
+                <li>所有信息均真实有效，可联系医院、武汉血液中心核验</li>
+            </ul>
+        </div>
+    </div>
 
-  toggle.addEventListener('click', () => {
-    const newMode = body.classList.contains('dark') ? 'light' : 'dark'
-    body.className = newMode
-    toggle.textContent = newMode === 'dark' ? '白天模式' : '黑夜模式'
-    localStorage.setItem('mode', newMode)
-  })
-</script>
+    <!-- 底部呼吁 -->
+    <div class="footer">
+        <p>哪怕只是帮忙转发扩散，对我们来说都是莫大的帮助</p>
+        <p>感谢每一位伸出援手的爱心人士！</p>
+        <p class="bless">愿患者早日康复，平安顺遂！</p>
+    </div>
+
+    <!-- 一键复制JS功能 -->
+    <script>
+        function copyText(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            // 兼容浏览器复制
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert("复制成功！");
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+        // 降级复制方案
+        function fallbackCopy(text) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            textArea.style.top = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert("复制成功！");
+            } catch (err) {
+                alert("复制失败，请手动复制");
+            } finally {
+                textArea.remove();
+            }
+        }
+    </script>
 </body>
 </html>
