@@ -215,12 +215,33 @@
         .image-modal.active {
             display: flex;
         }
+                /* 复制成功提示条 */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: #52c41a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(82, 196, 26, 0.3);
+            z-index: 1001;
+            font-size: 15px;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
-<body>
+<body>    
+    <!-- 复制成功提示条 -->
+    <div class="toast" id="toast">复制成功！</div>
     <!-- 顶部固定导航 -->
     <div class="navbar">
-        <h1>紧急求助 | 司金良先生定向互助献血</h1>
+        <h1>联系电话15971491445 | QQ3424478967 | 微信likiris</h1>
     </div>
 
     <!-- 头部标题 -->
@@ -238,7 +259,7 @@
     <!-- 基本情况说明 -->
     <div class="card">
         <h3>一、求助人&患者基本情况</h3>
-        <p><strong>求助人：</strong>司兆铭，武汉科技大学24级网络工程专业学生，为患者儿子</p>
+        <p><strong>求助人：</strong>司兆铭，为患者儿子</p>
         <p><strong>患者：</strong>司金良，男，42岁</p>
         <p><strong>就诊医院：</strong>武汉华中科技大学同济医学院附属同济医院（汉口院区）</p>
         <p><strong>住院信息：</strong>肾脏内科二病区，住院号60018979530，16楼北29床</p>
@@ -333,11 +354,21 @@
 
     <!-- 一键复制JS功能 -->
     <script>
+        // 显示提示条
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+
+        // 复制功能
         function copyText(elementId) {
             const text = document.getElementById(elementId).innerText;
             if (navigator.clipboard && window.isSecureContext) {
                 navigator.clipboard.writeText(text).then(() => {
-                    alert("复制成功！");
+                    showToast();
                 }).catch(() => {
                     fallbackCopy(text);
                 });
@@ -345,6 +376,8 @@
                 fallbackCopy(text);
             }
         }
+
+        // 降级复制方案
         function fallbackCopy(text) {
             const textArea = document.createElement("textarea");
             textArea.value = text;
@@ -356,13 +389,22 @@
             textArea.select();
             try {
                 document.execCommand('copy');
-                alert("复制成功！");
+                showToast();
             } catch (err) {
-                alert("复制失败，请手动复制");
+                const toast = document.getElementById('toast');
+                toast.innerText = "复制失败，请手动复制";
+                toast.style.background = "#d92b2b";
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    toast.innerText = "复制成功！";
+                    toast.style.background = "#52c41a";
+                }, 2000);
             } finally {
                 textArea.remove();
             }
         }
+
         // 图片放大功能
         function openImage(img) {
             const modal = document.getElementById('imageModal');
